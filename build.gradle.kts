@@ -8,9 +8,9 @@ plugins {
     id("com.gradleup.shadow") version "8.3.3"
 }
 
-group = "cc.cerial.cerialplugintemplate"
+group = "cc.cerial.smpsalesplugin"
 version = "1.0-SNAPSHOT"
-description = "This is the plugin description."
+description = "A plugin for SMPSales, which simply adds a colorful spiral when you join."
 
 repositories {
     mavenCentral()
@@ -39,14 +39,10 @@ java {
 //       There is no need to change these properties yourself in the "paper" section.
 // An example for values is at https://github.com/eldoriarpg/plugin-yml/wiki/Paper#kotlin.
 paper {
-    // Keep this as true!
-    generateLibrariesJson = true
-
     // The basic plugin information, such as the JavaPlugin extending class, API version, authors and website.
     // As noted above, name, description and version are Gradle properties. These should be changed
     // from Gradle.
-    main =       "cc.cerial.cerialplugintemplate.CerialPluginTemplate"
-    loader =     "cc.cerial.cerialplugintemplate.CerialLibraryLoader"
+    main =       "cc.cerial.smpsalesplugin.SMPSalesPlugin"
     apiVersion = mcVer
     authors =    listOf("oCerial")
     website =    "[Insert GitHub page here]"
@@ -60,10 +56,6 @@ paper {
 //            If we relocate without checking if it's a plugin server, the server will crash while hot loading.
 tasks.withType<ShadowJar> {
     archiveClassifier.set("")
-    // Only relocate when not running test server.
-    if (!gradle.startParameter.taskNames.contains("runServer")) {
-//        relocate("some.random.class", "some.other.class")
-    }
 }
 
 // Make shadowJar run at all times.
